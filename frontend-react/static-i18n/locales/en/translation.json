@@ -1,0 +1,23 @@
+{
+  "home": "Home",
+  "explore": "Explore",
+  "favorite": "Favorites",
+  "map": "Map",
+  "welcome": "Welcome to Tawsiah",
+  "welcome_subtitle": "Discover unique places and share your experiences",
+  "arabic": "Arabic",
+  "english": "English",
+  "team_name": "Tawsiah Team",
+  "change_language_btn": "Change Language",
+  "written_reviews": "You have written {{count}} reviews",
+  "settings_title": "Settings",
+  "choose_language": "Choose Language",
+  "settings_saved": "Language updated successfully",
+  "logout": "Logout",
+  "back": "Back",
+  "error_loading_translations": "Failed to load translations",
+  "settings": {
+    "title": "Settings",
+    "language": "Display Language"
+  }
+}

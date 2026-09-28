@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tawsiah - Discover unique places and share your experiences" />
+  <title>Tawsiah</title>
+
+  <!-- Preconnect for faster Google Fonts and CDN loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="#" class="brand" data-i18n="team_name">Tawsiah Team</a>
+    <ul class="nav-links">
+      <li><a href="#" data-i18n="home">Home</a></li>
+      <li><a href="#" data-i18n="explore">Explore</a></li>
+      <li><a href="#" data-i18n="favorite">Favorites</a></li>
+      <li><a href="#" data-i18n="map">Map</a></li>
+      <li><a href="settings.html" data-i18n="settings_title">Settings</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button
+        type="button"
+        class="lang-btn"
+        aria-label="Switch to Arabic"
+        onclick="changeLanguage('ar')"
+      >
+        <span data-i18n="arabic">Arabic</span>
+      </button>
+      <button
+        type="button"
+        class="lang-btn"
+        aria-label="Switch to English"
+        onclick="changeLanguage('en')"
+      >
+        <span data-i18n="english">English</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <h1 data-i18n="welcome">Welcome to Tawsiah</h1>
+      <p data-i18n="welcome_subtitle">Discover unique places and share your experiences</p>
+
+      <!-- Interpolation example: dynamic value passed via data-i18n-options -->
+      <div class="stats">
+        <p data-i18n="written_reviews" data-i18n-options='{"count": 5}'>
+          You have written 5 reviews
+        </p>
+      </div>
+
+      <div class="cta">
+        <button
+          type="button"
+          class="btn"
+          data-i18n="change_language_btn"
+          onclick="changeLanguage(i18next.language === 'ar' ? 'en' : 'ar')"
+        >
+          Change Language
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- i18next + plugins (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.15.1/dist/umd/i18next.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@8.0.0/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@2.6.1/dist/umd/i18nextHttpBackend.min.js"></script>
+  <script src="js/i18n-config.js"></script>
+</body>
+</html>

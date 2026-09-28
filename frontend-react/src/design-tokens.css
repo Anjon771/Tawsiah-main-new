@@ -1,0 +1,241 @@
+/* ============================================
+   Design Tokens — Tawsiah Design System
+   Base unit: 4px
+   ============================================ */
+
+:root {
+  /* ── Brand Colors ── */
+  --color-primary: #2d6a4f;
+  --color-primary-light: #52b788;
+  --color-primary-dark: #1b4332;
+  --color-primary-subtle: #d8f3dc;
+
+  --color-danger: #e63946;
+  --color-danger-light: #ff6b6b;
+  --color-warning: #f4a261;
+  --color-success: #2d6a4f;
+
+  /* ── Neutrals ── */
+  --color-background: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f1f3f5;
+  --color-border: #dee2e6;
+  --color-border-subtle: #e9ecef;
+
+  /* ── Text ── */
+  --color-text-primary: #212529;
+  --color-text-secondary: #6c757d;
+  --color-text-muted: #adb5bd;
+  --color-text-inverse: #ffffff;
+
+  /* ── Spacing Scale (4px base) ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ── Typography ── */
+  --font-family: 'Poppins', sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 15px;
+  --font-size-md: 17px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ── Borders ── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.14);
+
+  /* ── Transitions ── */
+  --transition-fast: 120ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 350ms ease;
+
+  /* ── Z-index Scale ── */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+  --z-tooltip: 400;
+}
+
+/* ============================================
+   Global Button Utilities
+   ============================================ */
+
+.btn-primary-custom {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 24px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+.btn-primary-custom:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn-primary-custom:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-outline-custom {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 24px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+.btn-outline-custom:hover {
+  background: var(--color-primary-subtle);
+}
+
+.btn-danger-custom {
+  background: var(--color-danger);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 18px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+.btn-danger-custom:hover {
+  background: #c1121f;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   Skeleton Loading
+   ============================================ */
+
+@keyframes skeleton-loading {
+  0%   { background-color: #e9ecef; }
+  50%  { background-color: #dee2e6; }
+  100% { background-color: #e9ecef; }
+}
+
+.skeleton {
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+/* ============================================
+   Responsive Grid
+   ============================================ */
+
+.places-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .places-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .places-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1280px) {
+  .places-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ============================================
+   Navbar Active State
+   ============================================ */
+
+.nav-link-custom {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-fast);
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+}
+.nav-link-custom:hover {
+  color: var(--color-primary-light) !important;
+}
+.nav-link-custom.active {
+  color: var(--color-primary) !important;
+  font-weight: var(--font-weight-semibold);
+  border-bottom-color: var(--color-primary);
+}
+
+/* ============================================
+   Admin Tab Styling
+   ============================================ */
+
+.admin-tab {
+  padding: 10px 24px;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.admin-tab.active {
+  border-bottom-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+.admin-tab:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+
+/* ============================================
+   Modal Styling
+   ============================================ */
+
+.modal-content-custom {
+  border-radius: var(--radius-xl) !important;
+  border: none !important;
+  box-shadow: var(--shadow-xl) !important;
+}
+.modal-header-custom {
+  border-bottom: 1px solid var(--color-border-subtle) !important;
+  padding: var(--space-5) !important;
+}
+.modal-footer-custom {
+  border-top: 1px solid var(--color-border-subtle) !important;
+  padding: var(--space-4) var(--space-5) !important;
+}
+.form-control-custom:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15) !important;
+}

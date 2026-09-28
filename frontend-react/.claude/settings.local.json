@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm uninstall *)",
+      "Bash(npm run *)",
+      "Bash(npm start *)",
+      "Bash(npm install *)",
+      "Bash(Select-Object FullName)",
+      "Bash(mvn spring-boot:run *)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :8082)",
+      "Bash(taskkill *)",
+      "Bash(curl *)",
+      "Bash(powershell *)"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Shadi Fahad",
+      "email": "Shadi@example.com",
+      "password": "password123",
+      "createdAt": "2024-01-15"
+    },
+    {
+      "id": 2,
+      "name": "Khaild Abdullah",
+      "email": "khaild@example.com",
+      "password": "password456",
+      "createdAt": "2024-01-20"
+    },
+    {
+      "id": 3,
+      "name": "Ahamd Alghamdi",
+      "email": "ahamd@example.com",
+      "password": "password789",
+      "createdAt": "2024-02-01"
+    }
+  ]
+}

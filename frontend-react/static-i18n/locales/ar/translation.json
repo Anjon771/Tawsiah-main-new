@@ -1,0 +1,23 @@
+{
+  "home": "الرئيسية",
+  "explore": "استكشاف",
+  "favorite": "المفضلة",
+  "map": "الخريطة",
+  "welcome": "مرحباً بك في توسيعة",
+  "welcome_subtitle": "اكتشف أماكن مميزة وشارك تجاربك",
+  "arabic": "العربية",
+  "english": "English",
+  "team_name": "فريق توسيعة",
+  "change_language_btn": "تغيير اللغة",
+  "written_reviews": "لقد كتبت {{count}} تقييم",
+  "settings_title": "الإعدادات",
+  "choose_language": "اختر اللغة",
+  "settings_saved": "تم تحديث اللغة بنجاح",
+  "logout": "تسجيل الخروج",
+  "back": "رجوع",
+  "error_loading_translations": "فشل تحميل الترجمة",
+  "settings": {
+    "title": "الإعدادات",
+    "language": "لغة العرض"
+  }
+}

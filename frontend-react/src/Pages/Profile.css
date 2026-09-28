@@ -1,0 +1,280 @@
+:root{
+  --bg:#f4fbf7;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --line:#e5e7eb;
+  --green:#0ea36a;
+  --green-2:#d7f7e8;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --radius: 18px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+
+.layout{
+  max-width:1200px;
+  margin:28px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns: 290px 1fr;
+  gap:22px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid rgba(229,231,235,0.8);
+  border-radius:var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.section{
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.section-title{
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.sidebar{
+  padding:0;
+  height: fit-content;
+  overflow:hidden;
+}
+
+.profile-head{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:22px 18px;
+  background:linear-gradient(135deg, var(--green) 0%, #0dbd78 100%);
+  color:#fff;
+  text-align:center;
+}
+
+.profile-icon{
+  width:78px;
+  height:78px;
+  border-radius:999px;
+  margin:0 auto 4px;
+  background:rgba(255,255,255,0.95);
+  color:var(--green);
+  display:grid;
+  place-items:center;
+  font-size:30px;
+  font-weight:800;
+}
+
+.profile-meta{
+  text-align:center;
+}
+
+.profile-meta .profile-name{
+  font-size:28px;
+  font-weight:700;
+  line-height:1.2;
+  margin-bottom:8px;
+}
+
+.profile-meta .profile-email{
+  font-size:14px;
+  opacity:0.95;
+  word-break:break-word;
+}
+
+.menu{
+  padding:14px 10px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.menu-item{
+  width:100%;
+  border:0;
+  background:#fff;
+  padding:14px 16px;
+  border-radius:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  font-weight:500;
+  color:var(--text);
+  border:1px solid transparent;
+  text-align:left;
+}
+
+.menu-item.active{
+  background:var(--green-2);
+  border-color:transparent;
+}
+
+.chev{
+  font-size:22px;
+  color:#3b5f4f;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+}
+
+.card-mini{
+  padding:18px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  box-shadow:none;
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat-icon{
+  font-size:26px;
+  margin-bottom:8px;
+}
+
+.stat-value{
+  font-size:30px;
+  font-weight:800;
+  margin-bottom:2px;
+}
+
+.stat-label{
+  color:var(--muted);
+  font-weight:600;
+}
+
+.chips{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.chip{
+  background:var(--green-2);
+  color:#065f46;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:13px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:14px;
+}
+
+.field label{
+  display:block;
+  font-weight:700;
+  margin:0 0 8px 4px;
+  color:#0b1220;
+}
+
+.input-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--green-2);
+  border-radius:16px;
+  padding:12px 14px;
+  border:1px solid rgba(14,163,106,0.18);
+}
+
+.ico{
+  width:22px;
+  text-align:center;
+}
+
+input,
+select{
+  width:100%;
+  border:0;
+  outline:none;
+  background:transparent;
+  font-size:15px;
+}
+
+.actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:14px;
+}
+
+.btn{
+  border:0;
+  cursor:pointer;
+  padding:10px 14px;
+  border-radius:14px;
+  background:var(--green);
+  color:#fff;
+  font-weight:800;
+}
+
+.btn.ghost{
+  background:#fff;
+  color:var(--text);
+  border:1px solid var(--line);
+}
+
+.hint{
+  color:var(--muted);
+  font-weight:600;
+}
+
+.read-only-box{
+  min-height:52px;
+  display:flex;
+  align-items:center;
+  color:var(--text);
+  font-weight:600;
+  cursor:not-allowed;
+  opacity:0.95;
+}
+
+.profile-icon:hover .avatar-overlay {
+  opacity: 1 !important;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.read-only-box span:last-child{
+  font-size:15px;
+}
+
+.no-data{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:600;
+}
+
+@media (max-width: 980px){
+  .layout{
+    grid-template-columns: 1fr;
+  }
+
+  .stats{
+    grid-template-columns: 1fr;
+  }
+}

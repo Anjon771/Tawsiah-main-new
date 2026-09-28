@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Settings - Tawsiah" />
+  <title data-i18n="settings_title">Settings</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <a href="index.html" class="brand" data-i18n="team_name">Tawsiah Team</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="home">Home</a></li>
+      <li><a href="#" data-i18n="explore">Explore</a></li>
+      <li><a href="#" data-i18n="favorite">Favorites</a></li>
+      <li><a href="#" data-i18n="map">Map</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button type="button" class="lang-btn" aria-label="Switch to Arabic" onclick="changeLanguage('ar')">
+        <span data-i18n="arabic">Arabic</span>
+      </button>
+      <button type="button" class="lang-btn" aria-label="Switch to English" onclick="changeLanguage('en')">
+        <span data-i18n="english">English</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="settings-page">
+    <div class="container">
+      <a href="index.html" class="back-link" aria-label="Go back">
+        <svg class="back-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span data-i18n="back">Back</span>
+      </a>
+
+      <h1 data-i18n="settings_title">Settings</h1>
+
+      <!-- Language Settings -->
+      <section class="settings-section" aria-labelledby="lang-heading">
+        <h2 id="lang-heading" data-i18n="choose_language">Choose Language</h2>
+
+        <div class="language-selector" role="radiogroup" aria-labelledby="lang-heading" id="lang-selector">
+          <label class="lang-option" for="lang-en">
+            <input type="radio" name="language" value="en" id="lang-en" />
+            <span class="lang-option-label" data-i18n="english">English</span>
+          </label>
+          <label class="lang-option" for="lang-ar">
+            <input type="radio" name="language" value="ar" id="lang-ar" />
+            <span class="lang-option-label" data-i18n="arabic">العربية</span>
+          </label>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="save-lang-btn" data-i18n="change_language_btn">
+          Change Language
+        </button>
+      </section>
+
+      <!-- Stats / Interpolation Example -->
+      <section class="settings-section" aria-labelledby="stats-heading">
+        <h2 id="stats-heading">Activity</h2>
+        <p class="settings-stat" data-i18n="written_reviews" data-i18n-options='{"count": 12}'>
+          You have written 12 reviews
+        </p>
+      </section>
+
+      <!-- Logout -->
+      <section class="settings-section" aria-labelledby="account-heading">
+        <h2 id="account-heading">Account</h2>
+        <button type="button" class="btn" id="logout-btn" data-i18n="logout">
+          Logout
+        </button>
+      </section>
+    </div>
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- i18next + plugins (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/i18next@23.15.1/dist/umd/i18next.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@8.0.0/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@2.6.1/dist/umd/i18nextHttpBackend.min.js"></script>
+  <script src="js/i18n-config.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

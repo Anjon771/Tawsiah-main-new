@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-image-crop": "^11.0.10",
+    "react-toastify": "^11.1.0"
+  }
+}

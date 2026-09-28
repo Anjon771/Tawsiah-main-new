@@ -1,0 +1,94 @@
+services:
+  frontend:
+    build:
+      context: ./frontend-react
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_API_URL=http://localhost:8082
+        - REACT_APP_FASTAPI_URL=http://localhost:8000
+    container_name: tawsiah-frontend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    depends_on:
+      - springboot
+      - fastapi
+
+  fastapi:
+    build:
+      context: ./backend-python
+      dockerfile: Dockerfile
+    container_name: tawsiah-fastapi
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - QDRANT_URL=http://qdrant:6333
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    restart: unless-stopped
+    depends_on:
+      - qdrant
+      - redis
+
+  springboot:
+    build:
+      context: ./backend-java
+      dockerfile: Dockerfile
+    container_name: tawsiah-springboot
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SERVER_PORT=8082
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/tawsiah
+      - SPRING_DATASOURCE_USERNAME=tawsiah_user
+      - SPRING_DATASOURCE_PASSWORD=tawsiah_pass
+      - PYTHON_RECOMMENDATION_URL=http://fastapi:8000
+      - SPRING_DATA_REDIS_HOST=redis
+      - SPRING_DATA_REDIS_PORT=6379
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - redis
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: tawsiah-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: tawsiah-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=tawsiah
+      - POSTGRES_USER=tawsiah_user
+      - POSTGRES_PASSWORD=tawsiah_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: tawsiah-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  qdrant_storage:
+  postgres_data:
+  redis_data:

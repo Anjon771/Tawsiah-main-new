@@ -1,0 +1,417 @@
+/* ============================================
+   Bilingual CSS Support: LTR / RTL
+   ============================================ */
+
+/* Import Arabic + English fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Design tokens */
+:root {
+  --font-en: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-ar: 'Cairo', 'Tajawal', sans-serif;
+  --color-bg: #ffffff;
+  --color-surface: #f9fafb;
+  --color-text: #1a1a1a;
+  --color-muted: #4b5563;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-border: #e5e7eb;
+  --color-shadow: rgba(0, 0, 0, 0.08);
+  --transition-duration: 0.25s;
+  --radius: 0.5rem;
+}
+
+/* Language-based font switching */
+:lang(ar) {
+  font-family: var(--font-ar);
+}
+
+:lang(en) {
+  font-family: var(--font-en);
+}
+
+html {
+  direction: ltr;
+  scroll-behavior: smooth;
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-en);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  transition: opacity var(--transition-duration) ease;
+}
+
+/* Smooth transition helper added by JS during swaps */
+html.is-changing-language body {
+  opacity: 0.85;
+}
+
+/* ============================================
+   Layout (logical properties where possible)
+   ============================================ */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  border-block-end: 1px solid #e5e7eb;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 500;
+  padding-inline: 0.5rem;
+}
+
+.brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lang-btn,
+.btn {
+  cursor: pointer;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 0.375rem;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: background var(--transition-duration), border-color var(--transition-duration), transform var(--transition-duration);
+}
+
+.lang-btn:hover,
+.btn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.btn {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Hero */
+.hero {
+  padding-block: 4rem;
+  padding-inline: 2rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-block-end: 1rem;
+  color: #111827;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  color: var(--color-muted);
+  margin-block-end: 1.5rem;
+}
+
+.stats {
+  margin-block: 2rem;
+  font-weight: 600;
+}
+
+/* ============================================
+   RTL overrides & directional mirroring
+   ============================================ */
+
+/* Flip directional icons/images when in RTL */
+[dir="rtl"] .icon-directional,
+[dir="rtl"] .img-directional {
+  transform: scaleX(-1);
+}
+
+/* Example: if a chevron/arrow icon is used inside nav */
+[dir="rtl"] .nav-links .icon-arrow {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Focus styles */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Settings Page Styles
+   ============================================ */
+
+.settings-page {
+  min-height: 70vh;
+  padding-block: 2rem;
+  padding-inline: 1rem;
+}
+
+.container {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  margin-block-end: 1.5rem;
+  transition: color var(--transition-duration);
+}
+
+.back-link:hover {
+  color: var(--color-text);
+}
+
+[dir="rtl"] .back-link .back-arrow {
+  transform: scaleX(-1);
+}
+
+.settings-page h1 {
+  font-size: 2rem;
+  margin-block: 0 1.5rem;
+  color: var(--color-text);
+}
+
+.settings-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-block-end: 1.5rem;
+  transition: background var(--transition-duration), border-color var(--transition-duration);
+}
+
+.settings-section h2 {
+  font-size: 1.125rem;
+  margin-block: 0 1rem;
+  color: var(--color-text);
+}
+
+/* Language Selector */
+.language-selector {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-block-end: 1.25rem;
+  background: var(--color-bg);
+}
+
+.lang-option {
+  position: relative;
+  cursor: pointer;
+  flex: 1;
+}
+
+.lang-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.lang-option-label {
+  display: block;
+  padding-inline: 1.5rem;
+  padding-block: 0.75rem;
+  text-align: center;
+  font-weight: 500;
+  color: var(--color-muted);
+  background: var(--color-bg);
+  transition: background var(--transition-duration), color var(--transition-duration);
+  cursor: pointer;
+  user-select: none;
+}
+
+.lang-option input[type="radio"]:checked + .lang-option-label,
+.lang-option input[type="radio"]:focus-visible + .lang-option-label {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.lang-option input[type="radio"]:focus-visible + .lang-option-label {
+  outline: 2px solid var(--color-primary-hover);
+  outline-offset: -2px;
+}
+
+.lang-option:hover .lang-option-label {
+  background: #eef2ff;
+  color: var(--color-primary);
+}
+
+[dir="rtl"] .lang-option-label {
+  font-family: var(--font-ar);
+}
+
+/* Button sizing */
+.btn-primary {
+  min-width: 8rem;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  inset-block-start: 1.5rem;
+  inset-inline-end: 1.5rem;
+  background: #1f2937;
+  color: #fff;
+  padding-inline: 1.25rem;
+  padding-block: 0.875rem;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px var(--color-shadow);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-0.75rem);
+  transition: opacity var(--transition-duration), transform var(--transition-duration);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[dir="rtl"] .toast {
+  inset-inline-end: auto;
+  inset-inline-start: 1.5rem;
+}
+
+/* Stats / Interpolation example */
+.settings-stat {
+  font-size: 1rem;
+  color: var(--color-muted);
+  margin-block-start: 0.5rem;
+}
+
+.settings-stat strong {
+  color: var(--color-text);
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f172a;
+    --color-surface: #1e293b;
+    --color-text: #f1f5f9;
+    --color-muted: #94a3b8;
+    --color-border: #334155;
+    --color-shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  body {
+    background-color: var(--color-bg);
+  }
+
+  .lang-btn,
+  .btn {
+    background: #1e293b;
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+
+  .btn {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+  }
+
+  .lang-option-label {
+    background: var(--color-bg);
+    color: var(--color-muted);
+  }
+
+  .lang-option:hover .lang-option-label {
+    background: #1e293b;
+    color: var(--color-primary);
+  }
+
+  .toast {
+    background: #f1f5f9;
+    color: #0f172a;
+  }
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 640px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-inline: 1rem;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .settings-page {
+    padding-inline: 1rem;
+  }
+
+  .language-selector {
+    width: 100%;
+  }
+}
